@@ -12,7 +12,7 @@ class Genre(models.Model):
     """
     Genre of the book
     """
-    name = models.CharField(max_length=255) 
+    name = models.CharField(max_length=255)
     description = models.TextField()
 
 
@@ -33,6 +33,6 @@ class Book(models.Model):
         verbose_name = "Book"
         verbose_name_plural = "Books"
         default_permissions = ("add", "change", "delete", "view")
-    
+
     def __str__(self):
         return str(self.title)
