@@ -10,8 +10,21 @@ This is my repo for all Django applications I will make in the future. It includ
 
 ### Container
 
-The project is run inside a container to house a development enviroment with all needed dependencies.
-The requirements.txt will install all the packages needed.
+The project is run inside a container to house a development enviroment with all needed dependencies. I have decided to use a docker container because of
+- Portability: run the same container on different machines or environments without worrying about differences in the underlying OS or system configuration.
+- Isolation: the container runs in its own environment and does not interfere with other applications or services running on the host machine.
+- Reproducibility: to define the entire application stack, including the database and other services, and spin up the entire stack.
+
+services:
+* The requirements.txt will install all the packages needed.
+* DB is MySQL on port 3306
+
+### Setup TBD
+
+* how to clone repo
+* how to build the Docker image for project
+* how to run it
+* how to test it
 
 ## Pre-commit
 

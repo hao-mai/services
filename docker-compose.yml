@@ -4,5 +4,22 @@ services:
   django:
     image: django-docker:0.0.1
     build: .
+    restart: unless-stopped
     ports:
       - "8000:8000"
+
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
