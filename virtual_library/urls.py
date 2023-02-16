@@ -1,6 +1,8 @@
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework import routers
 from django.urls import include, path
+from django.contrib import admin
+from django.http import HttpResponseRedirect
 
 from . import views
 
@@ -18,7 +20,8 @@ swagger_view = SpectacularSwaggerView.as_view(
 )
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("", lambda request: HttpResponseRedirect("/admin/")),
+    path("admin/", admin.site.urls),
     path("docs/", swagger_view, name="services_docs"),
     path("schema/", schema_view, name="library_schema"),
 ]

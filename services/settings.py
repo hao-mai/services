@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     # Third party apps
     "rest_framework",
     'drf_spectacular',
-    # User part apps
+    # User
     "virtual_library.apps.VirtualLibraryConfig",
 
 
@@ -71,13 +71,13 @@ WSGI_APPLICATION = 'services.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+###############
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db_url(
+        var="DATABASE_URL",
+        default="mysql://admin:password@localhost:3306/services-mysql",
+    )
 }
 
 

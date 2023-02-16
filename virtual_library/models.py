@@ -27,6 +27,7 @@ class Book(models.Model):
     genres = models.ManyToManyField(Genre)
     num_pages = models.IntegerField()
     availabiity = models.BooleanField()
+    quantity = models.IntegerField(default=0)
 
     class Meta:
         ordering = ["title"]
