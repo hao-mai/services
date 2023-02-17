@@ -74,19 +74,12 @@ WSGI_APPLICATION = 'services.wsgi.application'
 # Database
 ###############
 
-# DATABASES = {
-#     'default':  env.db_url(
-#         var="DATABASE_URL",
-#         default="mysql://user:password@host.docker.internal:3306/db",
-#     )
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db',
-        'HOST': 'host.docker.internal',  
-        'PORT': '3306',   
+        'HOST': 'host.docker.internal',
+        'PORT': '3306',
         'USER': 'user',
         'PASSWORD': "password",
     }
@@ -133,3 +126,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# djangorestframework
+############################################
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}

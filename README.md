@@ -3,8 +3,13 @@
 
 This is my repo for all Django applications I will make in the future. It includes a swagger file to see all the endpoint users can interact with, such as:
 
-* Create a RESTful API that allows developers to interact with data stored in a database. This app will provide various functionalities and features for devs with data already generated and/or new data to be created for an app called VirtualLibrary.
+* Create a RESTful API that allows developers to interact with data stored in a database. This app will provide various functionalities and features for devs with data already generated and/or new data to be created for an app called `virtual_library`.
 * Create a RESTful API that allows integrations to applications (Integrations API). TBD
+
+## Swagger file
+
+The `schema/` directory contained the swagger specificiation for our first API; virtual library. It can be used to automatically generate documentation and libraries for the API, it can validate incoming requests and outgoing responses. Developers can access the schema by visiting `/virtual_library/schema` endpoint or by viewing it on the web browser `/virtual_library/docs`
+ Here is the expected endpoints:
 
 ## Enviroment
 
@@ -25,6 +30,7 @@ services:
 * how to build the Docker image for project
 * how to run it
 * how to test it
+* how to load system data from fixture
 
 ## Pre-commit
 
@@ -52,7 +58,7 @@ To run all tests, simply run pytest with no arguments:
 
 ## Model Fixtures
 
-To provide initial data with migrations for Services app. This way, other who would like to test the CRUDs endpoints can generate the data.
+To provide initial data with migrations for virtual_library app. This way, other who would like to test the CRUDs endpoints can generate the data.
 * TBD
 
 
@@ -60,7 +66,3 @@ To provide initial data with migrations for Services app. This way, other who wo
 
 Tasks are scheduled via a cron scheduler and then queued.
 * TBD
-
-## Swagger file
-
-The `schema/` directory contained the swagger specificiation for our first API; virtual library. It can be used to automatically generate documentation and client libraries for the API, it can validate incoming requests and outgoing responses. Developers can access the schema by visiting `/library/schema` endpoint.

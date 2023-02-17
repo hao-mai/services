@@ -1,27 +1,27 @@
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework import routers
 from django.urls import include, path
-from django.contrib import admin
-from django.http import HttpResponseRedirect
+from django.conf import settings
 
-from . import views
-
-app_name = 'services'
+from virtual_library import views
 
 router = routers.DefaultRouter()
-router.register('library', views.LibraryViewSet, basename='books')
-
-schema_view = SpectacularAPIView.as_view(
-    patterns=[path("library/", include("services.urls"))],
-)
-swagger_view = SpectacularSwaggerView.as_view(
-    title="Virtual Library API",
-    url_name="library_schema",
-)
+router.register('books', views.BookViewSet, basename='book')
+router.register('checkout', views.CheckoutViewSet, basename='checkout')
 
 urlpatterns = [
-    path("", lambda request: HttpResponseRedirect("/admin/")),
-    path("admin/", admin.site.urls),
-    path("docs/", swagger_view, name="services_docs"),
-    path("schema/", schema_view, name="library_schema"),
+    path("", include(router.urls)),
 ]
+
+if settings.DEBUG or settings.ENVIRONMENT == "test":
+    schema_view = SpectacularAPIView.as_view(
+        patterns=[path("virtual_library/", include("virtual_library.urls"))],
+        )
+    swagger_view = SpectacularSwaggerView.as_view(
+        title="Library API",
+        url_name="library_schema",
+    )
+    urlpatterns += [
+        path("docs/", swagger_view, name="library_docs"),
+        path("schema/", schema_view, name="library_schema"),
+    ]

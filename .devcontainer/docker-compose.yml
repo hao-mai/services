@@ -46,7 +46,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     network_mode: host
-    
+
 volumes:
   db-data:
   cache:
