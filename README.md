@@ -10,6 +10,7 @@ This is my repo for all Django applications I will make in the future. It includ
 
 The `schema/` directory contained the swagger specificiation for our first API; virtual library. It can be used to automatically generate documentation and libraries for the API, it can validate incoming requests and outgoing responses. Developers can access the schema by visiting `/virtual_library/schema` endpoint or by viewing it on the web browser `/virtual_library/docs`
  Here is the expected endpoints:
+ 
  ![image](https://user-images.githubusercontent.com/75281072/219797823-931990ee-a7d4-4830-a048-24cfd2e378b0.png)
 
 ## Enviroment
