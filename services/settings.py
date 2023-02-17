@@ -74,11 +74,22 @@ WSGI_APPLICATION = 'services.wsgi.application'
 # Database
 ###############
 
+# DATABASES = {
+#     'default':  env.db_url(
+#         var="DATABASE_URL",
+#         default="mysql://user:password@host.docker.internal:3306/db",
+#     )
+# }
+
 DATABASES = {
-    'default': env.db_url(
-        var="DATABASE_URL",
-        default="mysql://user:password@host.docker.internal:3306/db",
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db',
+        'HOST': 'host.docker.internal',  
+        'PORT': '3306',   
+        'USER': 'user',
+        'PASSWORD': "password",
+    }
 }
 
 
