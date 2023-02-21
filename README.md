@@ -52,7 +52,8 @@ To manually run hooks on the entire project:
 
 ## Running Tests
 
-I choose [pytest](https://docs.pytest.org/en/6.2.x/getting-started.html) for all tests in my app(s).
+I chose [pytest](https://docs.pytest.org/en/6.2.x/getting-started.html) for all tests in my app(s). 
+For the setup, [pytest-django](https://pytest-django.readthedocs.io/en/latest/)
 
 To run all tests, simply run pytest with no arguments:
 
@@ -60,9 +61,9 @@ To run all tests, simply run pytest with no arguments:
 
 ## Model Fixtures
 
-To provide initial data with migrations for virtual_library app. This way, other who would like to test the CRUDs endpoints can generate the data.
-* TBD
-
+To provide initial data with migrations for virtual_library app. Fixtures can be used to pre-populate database with data for tests or to provide some initial data.
+The specific details of each book are completely made up and for illustrative purposes only.
+* You can load data by calling `./manage.py loaddata fixtures.yaml`
 
 ## Scheduled Tasks
 

@@ -2,6 +2,8 @@ import os
 import environ
 import pytest
 
+
+
 def test_secret_key_not_in_env():
     with open('.env.example', 'w') as f:
         f.write('')
@@ -10,7 +12,7 @@ def test_secret_key_not_in_env():
     with pytest.raises(Exception) as excinfo:
         env = environ.Env()
         SECRET_KEY = env('SECRET_KEY')
-    assert str(excinfo.value) == 'Set the SECRET_KEY environment variable'
+        assert str(excinfo.value) == 'Set the SECRET_KEY environment variable'
 
 def test_secret_key_in_env():
     with open('.env.example', 'w') as f:
@@ -20,3 +22,4 @@ def test_secret_key_in_env():
     env = environ.Env()
     SECRET_KEY = env('SECRET_KEY')
     assert SECRET_KEY == 'test_secret_key'
+
