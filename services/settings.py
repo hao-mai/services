@@ -125,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "virtual_library.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -158,5 +159,3 @@ REST_FRAMEWORK = {
 # fixtures
 ############################################
 FIXTURE_DIRS = ['virtual_library']
-
-

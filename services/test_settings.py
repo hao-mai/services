@@ -22,4 +22,3 @@ def test_secret_key_in_env():
     env = environ.Env()
     SECRET_KEY = env('SECRET_KEY')
     assert SECRET_KEY == 'test_secret_key'
-

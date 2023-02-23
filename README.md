@@ -10,7 +10,7 @@ This is my repo for all Django applications I will make in the future. It includ
 
 The `schema/` directory contained the swagger specificiation for our first API; virtual library. It can be used to automatically generate documentation and libraries for the API, it can validate incoming requests and outgoing responses. Developers can access the schema by visiting `/virtual_library/schema` endpoint or by viewing it on the web browser `/virtual_library/docs`
  Here is the expected endpoints:
- 
+
  ![image](https://user-images.githubusercontent.com/75281072/219797823-931990ee-a7d4-4830-a048-24cfd2e378b0.png)
 
 ## Enviroment
@@ -52,7 +52,7 @@ To manually run hooks on the entire project:
 
 ## Running Tests
 
-I chose [pytest](https://docs.pytest.org/en/6.2.x/getting-started.html) for all tests in my app(s). 
+I chose [pytest](https://docs.pytest.org/en/6.2.x/getting-started.html) for all tests in my app(s).
 For the setup, [pytest-django](https://pytest-django.readthedocs.io/en/latest/)
 
 To run all tests, simply run pytest with no arguments:
