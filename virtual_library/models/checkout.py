@@ -22,7 +22,7 @@ def update_book_availability(sender, instance, created, **kwargs):
         book = instance.book
         book.quantity -= 1
         book.save()
-        
+
         if book.quantity == 0:
             book.is_available = False
             book.save()

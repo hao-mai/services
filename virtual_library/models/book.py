@@ -24,7 +24,7 @@ class Book(models.Model):
         verbose_name = "Book"
         verbose_name_plural = "Books"
         default_permissions = ("add", "change", "delete", "view")
-    
+
     def save(self, *args, **kwargs):
         if self.quantity > 0:
             self.is_available = True

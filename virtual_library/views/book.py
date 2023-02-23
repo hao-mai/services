@@ -30,12 +30,3 @@ class BookViewSet(viewsets.ReadOnlyModelViewSet):
         available_books = Book.objects.filter(available=True)
         serializer = self.get_serializer(available_books, many=True)
         return Response(serializer.data)
-
-    @action(detail=False, methods=['post'])
-    def create_user(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

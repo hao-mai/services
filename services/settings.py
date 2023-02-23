@@ -1,22 +1,36 @@
 import os
 from pathlib import Path
-
+import pytest_is_running
 import environ
+import warnings
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Reference: https://django-environ.readthedocs.io/en/latest/
 env = environ.Env()
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+if not pytest_is_running.is_running():
+    env_file = os.getenv("ENV", ".env")
+    with warnings.catch_warnings():
+        # ignore warning if .env file is not found
+        warnings.filterwarnings("ignore", category=UserWarning)
+        environ.Env.read_env(env_file=BASE_DIR / env_file)
+
+API_URL = env("API_URL", default="http://localhost:8000")
+ENVIRONMENT = env("ENVIRONMENT", default="local")
 
 SECRET_KEY = env('SECRET_KEY')
 if not SECRET_KEY:
     raise Exception('DJANO_SECRET_KEY is not set in the enviroment.')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = env("DEBUG", default=False)
 
 ALLOWED_HOSTS = ["*"]
@@ -75,6 +89,14 @@ WSGI_APPLICATION = 'services.wsgi.application'
 ###############
 
 DATABASES = {
+    # 'test': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'test_db',
+    #     'HOST': 'host.docker.internal',
+    #     'PORT': '3306',
+    #     'USER': 'user',
+    #     'PASSWORD': 'password',
+    # },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db',
@@ -84,7 +106,6 @@ DATABASES = {
         'PASSWORD': "password",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -104,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "virtual_library.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -133,3 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+# fixtures
+############################################
+FIXTURE_DIRS = ['virtual_library']

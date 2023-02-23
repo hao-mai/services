@@ -7,6 +7,7 @@ from virtual_library import views
 
 router = routers.DefaultRouter()
 router.register('books', views.BookViewSet, basename='book')
+router.register('user', views.UserViewSet, basename='user')
 router.register('checkout', views.CheckoutViewSet, basename='checkout')
 
 urlpatterns = [

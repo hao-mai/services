@@ -47,6 +47,20 @@ services:
       - db-data:/var/lib/mysql
     network_mode: host
 
+  test_db:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_USER: 'user'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_PASSWORD: 'password'
+    ports:
+      - "3307:3306"
+    volumes:
+      - test-db-data:/var/lib/mysql
+
 volumes:
   db-data:
+  test-db-data:
   cache:
