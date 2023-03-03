@@ -1,8 +1,7 @@
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from virtual_library.serializers import UserSerializer, CheckoutSerializer
+from rest_framework import viewsets
+from virtual_library.serializers import UserSerializer
 from virtual_library.models import User
-from rest_framework.decorators import action
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """A very basic create-only viewset for users. 

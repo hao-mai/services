@@ -17,11 +17,5 @@ class BookTests(TestCase):
     def test_get_book(self):
         pass
 
-    def test_create_book(self):
-        pass
-
-    def test_update_book(self):
-        pass
-
     def test_delete_book(self):
         pass
