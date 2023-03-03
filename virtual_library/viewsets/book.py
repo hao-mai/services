@@ -1,6 +1,6 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets
 from virtual_library.models import Book
-from virtual_library.serializers import BookSerializer, UserSerializer
+from virtual_library.serializers import BookSerializer
 from rest_framework.permissions import IsAuthenticated
 from django_filters import rest_framework as django_filters
 from rest_framework.decorators import action
